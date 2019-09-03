@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Header = (props) => {
-    console.log('header: ', props);
     return (
         <>
             <h1>{props.course}</h1>
@@ -11,7 +10,6 @@ const Header = (props) => {
 }
 
 const Part = (props) => {
-    console.log('part: ', props);
     return (
         <>
             <p>
@@ -22,7 +20,6 @@ const Part = (props) => {
 }
 
 const Content = (props) => {
-    console.log('content: ', props);
     return (
         <>
             <Part part={props.parts[0].name} exercises={props.parts[0].exercises}/>
@@ -32,7 +29,6 @@ const Content = (props) => {
     )
 }
 const Total = (props) => {
-    console.log('total: ', props);
     return(
         <>
             <p>
