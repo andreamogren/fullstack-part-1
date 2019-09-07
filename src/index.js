@@ -93,15 +93,20 @@ const App = () => {
   
 ReactDOM.render(<App/>, document.getElementById('root')); */
 
+const Display = ({counter}) => <div>{counter}</div>
+const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
+
 const App = () => {
-    const [ counter, setCounter ] = useState(0)
-    
-    setTimeout(
-        () => setCounter(counter + 1), 1000
-    )
-    
+    const [counter, setCounter] = useState(0)
+    const setToValue = (value) => setCounter(value)
+
     return (
-        <div>{counter}</div>
+        <div>
+            <Display counter={counter}/>
+            <Button text="Plus" onClick={() => setToValue(counter + 1)}/>
+            <Button text="Minus" onClick={() => setToValue(counter - 1)}/>
+            <Button text="Reset" onClick={() => setToValue(0)}/>
+        </div>
     )
 }
 
