@@ -95,17 +95,33 @@ ReactDOM.render(<App/>, document.getElementById('root')); */
 
 const Display = ({counter}) => <div>{counter}</div>
 const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>
+const History = (props) => {
+    if (props.allClicks.length === 0) {
+        return (
+            <div>The app is used by pressing the buttons</div>
+        )
+    }
+    return (
+        <div>Button click history: {props.allClicks.join(' ')}</div>
+    )
+}
 
 
 const App = (props) => {
     const [counter, setCounter] = useState(0)
     const setToValue = (value) => setCounter(value)
-    const [clicks, setClicks] = useState({
-        left: 0, right: 0
-    })
+    const [left, setLeft] = useState(0)
+    const [right, setRight] = useState(0)
+    const [allClicks, setAll] = useState([])
 
-    const handleLeftClicks = () => setClicks({...clicks, left: clicks.left + 1 })
-    const handleRightClicks = () => setClicks({...clicks, right: clicks.right + 1})
+    const handleLeftClicks = () => {
+        setAll(allClicks.concat('L'))
+        setLeft(left + 1)
+    }
+    const handleRightClicks = () => {
+        setAll(allClicks.concat('R'))
+        setRight(right + 1)
+    }
 
 
     return (
@@ -115,10 +131,11 @@ const App = (props) => {
             <Button text="Minus" onClick={() => setToValue(counter - 1)}/>
             <Button text="Reset" onClick={() => setToValue(0)}/>
             <div>
-                {clicks.left}
-                <button onClick={handleLeftClicks}>left</button>
-                <button onClick={handleRightClicks}>right</button>
-                {clicks.right}
+                {left}
+                <Button text="Left" onClick={handleLeftClicks}/>
+                <Button text="Right" onClick={handleRightClicks}/>
+                {right}
+                <History allClicks={allClicks}/>
             </div>
         </div>
     )
