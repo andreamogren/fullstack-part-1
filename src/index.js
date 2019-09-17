@@ -9,13 +9,13 @@ const FeedbackButton = ({onClick, text}) => {
 
 const DisplayScores = ({text, score}) => {
     return (
-        <p>{text} {score}</p>
+        <tr><td>{text} {score}</td></tr>
     )
 }
 
 const Statistics = ({text, score}) => {
     return(
-        <p>{text} {score}</p>
+        <tr><td>{text} {score}</td></tr>
     )
 }
 
@@ -33,18 +33,22 @@ const App = () => {
         return (
             <div>
                 <h1>Give feedback</h1>
+                
                 <FeedbackButton onClick={() => setGood(good + 1)} text="good"/>
                 <FeedbackButton onClick={() => setNeutral(neutral + 1)} text="neutral"/>
                 <FeedbackButton onClick={() => setBad(bad + 1)} text="bad"/>
                 
                 <h3>Statistics</h3>
+                <table>
+                <tbody>
                 <DisplayScores text="Good:" score={good}/>
                 <DisplayScores text="Neutral:" score={neutral}/>
                 <DisplayScores text="Bad:" score={bad}/>
-
                 <Statistics text="All:" score={total}/>
                 <Statistics text="Average:" score={average}/>
                 <Statistics text="Positive:" score={positiveAverage + ' %'}/>
+                </tbody>
+                </table>
             </div>
         )
     } else {
