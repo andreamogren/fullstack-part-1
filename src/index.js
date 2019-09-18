@@ -13,7 +13,6 @@ const anecdotes = [
 const App = (props) => {
     const [selected, setSelected] = useState(0)
     const randomAnecdote = Math.floor(Math.random() * anecdotes.length)
-    selected += randomAnecdote
 
     return (
         <div>
