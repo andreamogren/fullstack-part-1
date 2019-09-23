@@ -28,7 +28,6 @@ const App = () => {
     const average = score / total 
     const positiveAverage = (good / total) * 100
 
-    //Ternary operator used below to avoid displaying NaN on initial render
     if (total) {
         return (
             <div>
